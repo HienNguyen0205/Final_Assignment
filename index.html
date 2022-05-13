@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img//favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img//favicon-16x16.png">
+    <link rel="manifest" href="assets/img//site.webmanifest">
+    <link rel="stylesheet" href="assets/style.css">
+    <title>E-wallet</title>
+</head>
+
+<body>
+    <div id="main-container" class="container-fluid">
+        <div class="row h-100">
+            <div id="side-bar" class="col-1">
+                <div id="logo">
+                    <a href="#">
+                        <img alt="" src="assets/img/logo.png">
+                    </a>
+                </div>
+                <hr>
+                <ul id="tab">
+                    <li id="home-btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Home">
+                        <i class="fa-solid fa-house-chimney icon icon-active"></i>
+                    </li>
+                    <li id="history-btn" data-bs-toggle="tooltip" data-bs-placement="right" title="History">
+                        <i class="fa-solid fa-clock-rotate-left icon"></i>
+                    </li>
+                    <li id="dashboard-btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Dashboard">
+                        <i class="fa-solid fa-chart-line icon"></i>
+                    </li>
+                    <li id="account-btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Your account">
+                        <i class="fa-solid fa-user icon"></i>
+                    </li>
+                </ul>
+                <a id="setting" data-bs-toggle="tooltip" data-bs-placement="right" title="Setting">
+                    <i class="fa-solid fa-gear icon"></i>
+                </a>
+            </div>
+            <div id="main-content" class="col">
+                <header>
+                    <div class="container-fluid">
+                        <div class="row my-3">
+                            <div class="d-flex align-items-center col">
+                                <div id="date-time" class="me-auto">
+                                    <h5 id="date"></h5>
+                                    <h6 id="time"></h6>
+                                </div>
+                                <div class="dropdown">
+                                    <button id="notification" class="btn btn-outline-primary mx-4" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa-solid fa-bell"></i>
+                                    </button>
+                                    <ul id="notification-list" class="dropdown-menu dropdown-menu-end mt-2" aria-labelledby="notification">
+                                        <li><a class="dropdown-item" href="#">Action</a></li>
+                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    </ul>
+                                </div>
+                                <div class="dropdown d-flex align-items-center">
+                                    <div id="user-wrap">
+                                        <div id="user-name">User name</div>
+                                        <small id="user-id" class="d-block text-end">User id</small>
+                                    </div>
+                                    <div id="avatar" data-bs-toggle="dropdown" aria-expanded="false"></div>
+                                    <ul class="dropdown-menu dropdown-menu-end mt-2" aria-labelledby="avatar">
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                                <i class="fa-solid fa-user"></i>
+                                                Your Account</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                                <i class="fa-solid fa-gear"></i>
+                                                Settings</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                                <i class="fa-solid fa-power-off"></i>
+                                                Logout</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <div class="container-fluid">
+                    <div class="row my-3">
+                        <div class="col">
+                            <h2 id="section-name" class="d-inline-block" section-name="home">Home</h2>
+                            <h2 id="section-expand" class="d-inline-block"></h2>
+                        </div>
+                    </div>
+                    <div id="home" class="row">
+                        <div class="col-9">
+                            <div class="row">
+                                <div class="col">
+                                    <div id="section-wrap">
+                                        <div id="balance-info">
+                                            <h5 class="mt-2 opacity-50">Current Balance</h5>
+                                            <div class="d-flex align-items-center">
+                                                <div id="balance" class="me-3">$0.0</div>
+                                                <i class="fa-solid fa-eye show-pass"></i>
+                                            </div>
+                                            <h5 class="mt-3 opacity-50">Today Transaction</h5>
+                                            <div>
+                                                <div class="d-flex align-items-center mt-3" data-bs-toggle="tooltip"
+                                                    data-bs-placement="left" title="Income">
+                                                    <i id="increase-icon" class="fa-solid fa-arrow-up icon me-2"></i>
+                                                    <div id="increase-quantity">$0.0</div>
+                                                </div>
+                                                <div class="d-flex align-items-center mt-3" data-bs-toggle="tooltip"
+                                                    data-bs-placement="left" title="Spending">
+                                                    <i id="descrease-icon" class="fa-solid fa-arrow-down icon me-2"></i>
+                                                    <div id="descrease-quantity">$0.0</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="function-menu">
+                                            <header class="text-center">
+                                                <h4>Services</h4>
+                                            </header>
+                                            <div id="function-wrap">
+                                                <div id="deposit" class="function-item">
+                                                    <div class="icon-wrap mb-2">
+                                                        <i class="fa-solid fa-arrow-right-to-bracket icon-spand"></i>
+                                                    </div>
+                                                    <div>Deposit</div>
+                                                </div>
+                                                <div id="withdraw" class="function-item">
+                                                    <div class="icon-wrap mb-2">
+                                                        <i class="fa-solid fa-dollar-sign icon-spand"></i>
+                                                    </div>
+                                                    <div>Withdraw</div>
+                                                </div>
+                                                <div id="tranfer" class="function-item">
+                                                    <div class="icon-wrap mb-2">
+                                                        <i class="fa-solid fa-money-bill-transfer icon-spand"></i>
+                                                    </div>
+                                                    <div>Transfer</div>
+                                                </div>
+                                                <div id="topUp-card" class="function-item">
+                                                    <div class="icon-wrap mb-2">
+                                                        <i class="fa-solid fa-mobile-screen icon-spand"></i>
+                                                    </div>
+                                                    <div>Top-up Card</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col">
+                                    <div id="chart1-wrap">
+                                        <canvas id="chart1" width="250" height="250"></canvas>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div id="chart2-wrap">
+                                        <canvas id="chart2" width="250" height="250"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div id="lasted-transaction">
+                                <h4 class="text-center my-2">Lasted Transaction</h4>
+                                <ul class="transaction-list">
+                                    <li class="transaction-item">
+                                        <i class="fa-solid fa-arrow-right-to-bracket deposit-icon transaction-icon"></i>
+                                        <div>Deposit</div>
+                                        <div>$0.0</div>
+                                    </li>
+                                    <li class="transaction-item">
+                                        <i class="fa-solid fa-dollar-sign withdraw-icon transaction-icon"></i>
+                                        <div>Widthdraw</div>
+                                        <div>$0.0</div>
+                                    </li>
+                                    <li class="transaction-item">
+                                        <i class="fa-solid fa-money-bill-transfer transfer-icon transaction-icon"></i>
+                                        <div>Transfer</div>
+                                        <div>$0.0</div>
+                                    </li>
+                                    <li class="transaction-item">
+                                        <i class="fa-solid fa-mobile-screen toUp-card-icon transaction-icon"></i>
+                                        <div>To-up Card</div>
+                                        <div>$0.0</div>
+                                    </li>
+                                    <li class="transaction-item">
+                                        <i class="fa-solid fa-arrow-right-to-bracket deposit-icon transaction-icon"></i>
+                                        <div>Deposit</div>
+                                        <div>$0.0</div>
+                                    </li>
+                                    <li class="transaction-item">
+                                        <i class="fa-solid fa-dollar-sign withdraw-icon transaction-icon"></i>
+                                        <div>Widthdraw</div>
+                                        <div>$0.0</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="history" class="row">
+
+                    </div>
+                    <div id="dashboard" class="row">
+
+                    </div>
+                    <div id="your-account" class="row">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+    <script src="assets/index.js"></script>
+</body>
+
+</html>
