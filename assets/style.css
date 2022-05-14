@@ -14,6 +14,7 @@
     --blue-light-color: #b3cde0;
     --yellow-color:	#ffbf00;
     --yellow-light-color: #fffbb6;
+    --table-dark-color: #212529;
 }
 
 body{
@@ -71,6 +72,7 @@ li{
 
 #tab li{
     margin: 16px 0;
+    position: relative;
 }
 
 .icon{
@@ -79,8 +81,12 @@ li{
     cursor: pointer;
 }
 
+.icon::before{
+    width: 18px;
+    height: 18px;
+}
+
 .icon-active{
-    position: relative;
     background-image: var(--gradient-bg);
     background-size: 400% 400%;
     border-radius: 3px;
@@ -285,12 +291,40 @@ li{
 }
 
 #chart1-wrap, #chart2-wrap > canvas {
-    max-height: 250px;
+    height: 250px !important;
     padding: 12px;
+}
+
+#chart1, #chart2{
+    position: relative;
 }
 
 /* history */
 
 #history{
     display: none;
+}
+
+#history-container{
+    height: 77vh;
+    background-color: var(--table-dark-color);
+    padding: 12px;
+    border-radius: 12px;
+}
+
+#history-list i{
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+}
+
+#table-container {
+    position: relative;
+    overflow-y: auto;
+    height: 465px;
+}
+
+#table thead {
+    position: sticky;
+    top: 0;
 }

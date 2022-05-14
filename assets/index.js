@@ -36,6 +36,7 @@ $(function () {
             }]
         }
         let opt = {
+            responsive: true,
             maintainAspectRatio: false,
             plugins: {
                 legend: {
@@ -73,27 +74,31 @@ $(function () {
 
     let currShow = 'home'
 
-    function showSection(section) {
+    function showSection(btn ,section) {
+        $('#'+currShow+'-btn > i' ).removeClass('icon-active')
+        btn.children().addClass('icon-active')
         $('#'+currShow).fadeOut()
+        currShow = section.replace(' ','-').toLowerCase()
+        console.log(currShow)
         $('#'+section.replace(' ','-').toLowerCase()).fadeIn()
         $('#section-name').text(section)
         $('#section-expand').text('')
     }
 
     $('#home-btn').click(function (){
-        showSection('Home')
+        showSection($(this),'Home')
     })
 
     $('#history-btn').click(function (){
-        showSection('History')
+        showSection($(this),'History')
     })
 
     $('#dashboard-btn').click(function (){
-        showSection('Dashboard')
+        showSection($(this),'Dashboard')
     })
 
-    $('#account-btn').click(function (){
-        showSection('Your Account')
+    $('#your-account-btn').click(function (){
+        showSection($(this),'Your Account')
     })
 
     // show/hide password
@@ -117,7 +122,6 @@ $(function () {
     //section name handle
 
     $('#section-name').click(function (){
-        console.log('lol')
         const sectionName = $('#section-name').attr('section-name')
         if($('#section-expand').text() != ''){
             $('#'+sectionName).fadeIn()

@@ -38,7 +38,7 @@
                     <li id="dashboard-btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Dashboard">
                         <i class="fa-solid fa-chart-line icon"></i>
                     </li>
-                    <li id="account-btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Your account">
+                    <li id="your-account-btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Your account">
                         <i class="fa-solid fa-user icon"></i>
                     </li>
                 </ul>
@@ -56,10 +56,12 @@
                                     <h6 id="time"></h6>
                                 </div>
                                 <div class="dropdown">
-                                    <button id="notification" class="btn btn-outline-primary mx-4" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <button id="notification" class="btn btn-outline-primary mx-4"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="fa-solid fa-bell"></i>
                                     </button>
-                                    <ul id="notification-list" class="dropdown-menu dropdown-menu-end mt-2" aria-labelledby="notification">
+                                    <ul id="notification-list" class="dropdown-menu dropdown-menu-end mt-2"
+                                        aria-labelledby="notification">
                                         <li><a class="dropdown-item" href="#">Action</a></li>
                                         <li><a class="dropdown-item" href="#">Another action</a></li>
                                         <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -109,18 +111,19 @@
                                             <h5 class="mt-2 opacity-50">Current Balance</h5>
                                             <div class="d-flex align-items-center">
                                                 <div id="balance" class="me-3">$0.0</div>
-                                                <i class="fa-solid fa-eye show-pass"></i>
+                                                <i class="fa-solid fa-eye show-pass" data-bs-toggle="tooltip"
+                                                data-bs-placement="right" title="Show/Hide Password"></i>
                                             </div>
                                             <h5 class="mt-3 opacity-50">Today Transaction</h5>
                                             <div>
                                                 <div class="d-flex align-items-center mt-3" data-bs-toggle="tooltip"
                                                     data-bs-placement="left" title="Income">
-                                                    <i id="increase-icon" class="fa-solid fa-arrow-up icon me-2"></i>
+                                                    <i id="increase-icon" class="fa-solid fa-arrow-up icon me-3"></i>
                                                     <div id="increase-quantity">$0.0</div>
                                                 </div>
                                                 <div class="d-flex align-items-center mt-3" data-bs-toggle="tooltip"
                                                     data-bs-placement="left" title="Spending">
-                                                    <i id="descrease-icon" class="fa-solid fa-arrow-down icon me-2"></i>
+                                                    <i id="descrease-icon" class="fa-solid fa-arrow-down icon me-3"></i>
                                                     <div id="descrease-quantity">$0.0</div>
                                                 </div>
                                             </div>
@@ -159,13 +162,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row mt-3">
-                                <div class="col">
+                            <div class="row mt-3 flex-nowrap">
+                                <div class="col-6">
                                     <div id="chart1-wrap">
                                         <canvas id="chart1" width="250" height="250"></canvas>
                                     </div>
                                 </div>
-                                <div class="col">
+                                <div class="col-6">
                                     <div id="chart2-wrap">
                                         <canvas id="chart2" width="250" height="250"></canvas>
                                     </div>
@@ -211,7 +214,76 @@
                         </div>
                     </div>
                     <div id="history" class="row">
-
+                        <div class="col-12">
+                            <div id="history-container">
+                                <div class="d-flex justify-content-end">
+                                    <div class="dropdown mx-2">
+                                        <button id="filter" class="btn btn-outline-primary" data-bs-toggle="dropdown"
+                                            aria-expanded="false">
+                                            <i class="fa-solid fa-filter"></i>
+                                        </button>
+                                        <ul id="notification-list" class="dropdown-menu dropdown-menu-end mt-2"
+                                            aria-labelledby="filter">
+                                            <li><a class="dropdown-item" href="#">All</a></li>
+                                            <li><a class="dropdown-item" href="#">Deposit</a></li>
+                                            <li><a class="dropdown-item" href="#">Withdraw</a></li>
+                                            <li><a class="dropdown-item" href="#">Transfer</a></li>
+                                            <li><a class="dropdown-item" href="#">Top-up Card</a></li>
+                                            <li><a class="dropdown-item" href="#">Withdraw</a></li>
+                                        </ul>
+                                    </div>
+                                    <button class="btn btn-outline-secondary mx-2" data-bs-toggle="tooltip"
+                                        data-bs-placement="bottom" title="Show/Hide Password"><i
+                                            class="fa-solid fa-eye"></i></button>
+                                </div>
+                                <table id="table" class="table table-dark table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Status</th>
+                                            <th>Day & Time</th>
+                                            <th>Wallet Balance</th>
+                                            <th>Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="history-list">
+                                        <tr>
+                                            <td class="d-flex align-items-center">
+                                                <i
+                                                    class="fa-solid fa-arrow-right-to-bracket deposit-icon transaction-icon me-3"></i>
+                                                Deposit
+                                            </td>
+                                            <td class="text-success">Success</td>
+                                            <td>00:00:00 00/00/0000</td>
+                                            <td>$0.0</td>
+                                            <td>$0.0</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="d-flex align-items-center">
+                                                <i
+                                                    class="fa-solid fa-arrow-right-to-bracket deposit-icon transaction-icon me-3"></i>
+                                                Deposit
+                                            </td>
+                                            <td class="text-success">Success</td>
+                                            <td>00:00:00 00/00/0000</td>
+                                            <td>$0.0</td>
+                                            <td>$0.0</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="d-flex align-items-center">
+                                                <i
+                                                    class="fa-solid fa-arrow-right-to-bracket deposit-icon transaction-icon me-3"></i>
+                                                Deposit
+                                            </td>
+                                            <td class="text-success">Success</td>
+                                            <td>00:00:00 00/00/0000</td>
+                                            <td>$0.0</td>
+                                            <td>$0.0</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                     <div id="dashboard" class="row">
 
