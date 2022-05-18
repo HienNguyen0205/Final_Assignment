@@ -10,7 +10,9 @@
     --green-light-color: #c1ff93;
     --red-color: #ff084a;
     --red-light-color: #ffc2cd;
+    --pink-color: rgba(188, 34, 195, 1);
     --blue-color: #03396c;
+    --blue-input-color: #8e7cc3;
     --blue-light-color: #b3cde0;
     --yellow-color: #a98600;
     --yellow-light-color: #feffc3;
@@ -454,12 +456,23 @@ li {
     position: relative;
 }
 
-#account-avatar > i{
+#avatar-wrap{
+    position: relative;
+}
+
+#update-btn{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 40%;
+    right: -170%;
+}
+
+#status-icon{
     position: absolute;
     top: 75%;
     left: 75%;
     border-radius: 50%;
-    background-color: var(--green-color);
     font-size: 18px;
     padding: 3px;
 }
@@ -477,14 +490,14 @@ li {
     align-items: center;
     position: relative;
     border-radius: .5rem;
-    border: 3px solid var(--green-color);
+    border: 3px solid var(--blue-input-color);
     padding: 6px 4px 6px 12px;
     width: 50%;
     margin-bottom: 16px;
 }
 
 .account-info:hover{
-    border-color: var(--green-light-color);
+    border-color: var(--blue-light-color);
 }
 
 .account-info::before{
@@ -492,6 +505,7 @@ li {
     display: block;
     position: absolute;
     background-color: var(--bg-dark);
+    color: var(--pink-color);
     top: -16px;
     left: 12px;
     padding: 0 8px;

@@ -30,7 +30,7 @@ $(function () {
         })
     }
 
-    function pieOpt (label, bgColor, quantity, title) {
+    function pieOpt(label, bgColor, quantity, title) {
         const data = {
             labels: label,
             datasets: [{
@@ -60,16 +60,18 @@ $(function () {
                     }
                 }
             },
-            
+
         }
-        return {data: data, opt: opt}
+        return {
+            data: data,
+            opt: opt
+        }
     }
 
-    function lineOpt(label, bgColor, quantity, title){
+    function lineOpt(label, bgColor, quantity, title) {
         const data = {
             labels: label,
-            datasets: [
-                {
+            datasets: [{
                     label: 'Deposit',
                     backgroundColor: bgColor[0],
                     borderColor: bgColor[0],
@@ -133,18 +135,21 @@ $(function () {
                 }
             }
         }
-        return {data: data, opt: opt}
+        return {
+            data: data,
+            opt: opt
+        }
     }
 
     const pie1_legend = ['Income', 'Spending']
     const pie1_bg = ['#4b961c', '#ff084a']
     const pie1_title = 'Today Income/Spending Scale'
 
-    const pie2_legend = ['Deposit', 'Withdraw','Tranfer','Top-up Card']
-    const pie2_bg = ['#4b961c', '#ff084a','#03396c','#ffbf00']
+    const pie2_legend = ['Deposit', 'Withdraw', 'Tranfer', 'Top-up Card']
+    const pie2_bg = ['#4b961c', '#ff084a', '#03396c', '#ffbf00']
     const pie2_title = 'Today Transaction Scale'
 
-    const line1_legend = ['','','','','','','']
+    const line1_legend = ['', '', '', '', '', '', '']
     const line1_bg = pie2_bg
     const line1_title = 'Transition Scale in recent days'
 
@@ -159,43 +164,48 @@ $(function () {
 
     createChart(chart1, 'doughnut', pieOpt(pie1_legend, pie1_bg, [40, 60], pie1_title))
     createChart(chart2, 'doughnut', pieOpt(pie2_legend, pie2_bg, [20, 30, 40, 10], pie2_title))
-    createChart(chart3, 'line', lineOpt(line1_legend,line1_bg,{deposit,withdraw,tranfer,card}, line1_title))
-    createChart(chart4, 'doughnut', pieOpt(pie3_legend, pie3_bg, [60,40], pie3_title))
+    createChart(chart3, 'line', lineOpt(line1_legend, line1_bg, {
+        deposit,
+        withdraw,
+        tranfer,
+        card
+    }, line1_title))
+    createChart(chart4, 'doughnut', pieOpt(pie3_legend, pie3_bg, [60, 40], pie3_title))
 
     // sidebar handle
 
     let currShow = 'home'
 
-    function showSection(btn ,section) {
-        $('#'+section.replace(' ','-').toLowerCase()).fadeIn()
+    function showSection(btn, section) {
+        $('#' + section.replace(' ', '-').toLowerCase()).fadeIn()
         $('#section-name').text(section)
         $('#section-expand').text('')
-        $('#'+currShow+'-btn > i' ).removeClass('icon-active')
+        $('#' + currShow + '-btn > i').removeClass('icon-active')
         btn.children().addClass('icon-active')
-        currShow = section.replace(' ','-').toLowerCase()
+        currShow = section.replace(' ', '-').toLowerCase()
     }
 
-    $('#home-btn').click(function (){
-        $('#'+currShow).fadeOut(200,function(){
-            showSection($('#home-btn'),'Home')
+    $('#home-btn').click(function () {
+        $('#' + currShow).fadeOut(200, function () {
+            showSection($('#home-btn'), 'Home')
         })
     })
 
-    $('#history-btn').click(function (){
-        $('#'+currShow).fadeOut(200,function(){
-            showSection($('#history-btn'),'History')
+    $('#history-btn').click(function () {
+        $('#' + currShow).fadeOut(200, function () {
+            showSection($('#history-btn'), 'History')
         })
     })
 
-    $('#dashboard-btn').click(function (){
-        $('#'+currShow).fadeOut(200,function(){
-            showSection($('#dashboard-btn'),'Dashboard')
+    $('#dashboard-btn').click(function () {
+        $('#' + currShow).fadeOut(200, function () {
+            showSection($('#dashboard-btn'), 'Dashboard')
         })
     })
 
-    $('#your-account-btn').click(function (){
-        $('#'+currShow).fadeOut(200,function(){
-            showSection($('#your-account-btn'),'Your Account')
+    $('#your-account-btn').click(function () {
+        $('#' + currShow).fadeOut(200, function () {
+            showSection($('#your-account-btn'), 'Your Account')
         })
     })
 
@@ -206,70 +216,148 @@ $(function () {
     passwordHandle()
 
     function passwordHandle() {
-        if(flag){
+        if (flag) {
             $('#balance').text('*'.repeat(balance.length))
             $('.show-pass').addClass('fa-eye-slash')
             $('.show-pass').removeClass('fa-eye')
-        }else{
+        } else {
             $('#balance').text(balance)
             $('.show-pass').addClass('fa-eye')
             $('.show-pass').removeClass('fa-eye-slash')
         }
     }
 
-    $('.show-pass').click(function (){
+    $('.show-pass').click(function () {
         passwordHandle()
         flag = !flag
     })
 
     //section name handle
 
-    $('#section-name').click(function (){
+    $('#section-name').click(function () {
         const sectionName = $('#section-name').attr('section-name')
-        if($('#section-expand').text() != ''){
-            $('#'+sectionName).fadeIn()
+        if ($('#section-expand').text() != '') {
+            $('#' + sectionName).fadeIn()
             $('#section-expand').text('')
         }
     })
 
-    function showFunction(name){
+    function showFunction(name) {
         $('#section-expand').text(' > ' + name)
         $('#home').fadeOut()
     }
 
     // deposit handle
 
-    $('#deposit').click(function (){
+    $('#deposit').click(function () {
         showFunction('Deposit')
     })
 
     // withdraw handle
 
-    $('#withdraw').click(function (){
+    $('#withdraw').click(function () {
         showFunction('Withdraw')
     })
 
     // tranfer handle
 
-    $('#tranfer').click(function (){
+    $('#tranfer').click(function () {
         showFunction('Tranfer')
     })
 
     // deposit handle
 
-    $('#toppUp-card').click(function (){
+    $('#topUp-card').click(function () {
         showFunction('Top-up Card')
     })
 
     // user info
 
-    userInfo = {name: 'User Name', birthday: '02/05/2002', phone: '0123456789', email: 'user@gmail.com', address: 'Tp. Hồ Chí Minh', password: '123456789'}
+    userInfo = {
+        status: 'no verified',
+        name: 'User Name',
+        birthday: '02/05/2002',
+        phone: '0123456789',
+        email: 'user@gmail.com',
+        address: 'Tp. Hồ Chí Minh',
+        password: '123456789'
+    }
+
+    if (userInfo.status == 'verified') {
+        $('#status-icon').removeClass('fa-circle-exclamation')
+        $('#status-icon').addClass('fa-circle-check')
+        $('#status-icon').css('color', 'var(--green-color)')
+        $('#your-account-btn').on('click')
+        $('#update-btn').hide()
+    } else if (userInfo.status == 'not verified') {
+        $('#your-account-btn').off('click')
+    } else {
+        $('#status-icon').removeClass('fa-circle-check')
+        $('#status-icon').addClass('fa-circle-exclamation')
+        $('#status-icon').css('color', 'var(--red-color)')
+        $('#your-account-btn').on('click')
+        $('#update-btn').show()
+    }
 
     $('#name').text(userInfo.name)
     $('#birthday').text(userInfo.birthday)
     $('#phone-number').text(userInfo.phone)
     $('#email').text(userInfo.email)
     $('#address').text(userInfo.address)
-    $('#password').text('*'.repeat(userInfo.password.length))
+    $('#password').html('*'.repeat(userInfo.password.length)
+        + '<button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#change-password-modal">' 
+        + '<i class="fa-solid fa-lock me-2"></i>Change Password</button>')
+
+    // change password handle
+
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/
+    let currPass = ''
+    let newPass = ''
+    let confirmPass = ''
+
+    function resetInput() {
+        $('#input-current-password').val('')
+        $('#input-new-password').val('')
+        $('#input-confirm-password').val()
+    }
+
+    function validateNewPass() {
+        if(!passwordRegex.test(newPass)){
+            $('#new-pass-mes').text('Must contain at lest 6 characters, one letter and one number')
+            resetInput()
+        }
+        if(newPass != confirmPass){
+            $('#confirm-pass-mes').text('Incorrect confirm password')
+            resetInput()
+        }
+        if(currPass != userInfo.password){
+            $('#current-pass-mes').text('Incorrect password')
+            $('#new-pass-mes').text('')
+            $('#confirm-pass-mes').text('')
+            resetInput()
+        }
+    }
+
+    $('#input-current-password').change(function() {
+        currPass = $(this).val()
+    })
+
+    $('#input-new-password').change(function() {
+        newPass = $(this).val()
+    })
+
+    $('#input-confirm-password').change(function() {
+        confirmPass = $(this).val()
+    })
+
+    $('#reset-pass-btn').click(function (){
+        validateNewPass()
+    })
+
+    $('#close-pass-form').click(function (){
+        $('#current-pass-mes').text('')
+        $('#new-pass-mes').text('')
+        $('#confirm-pass-mes').text('')
+    })
 
 })

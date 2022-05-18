@@ -332,15 +332,24 @@
                     <div id="your-account" class="row">
                         <div class="col-12">
                             <div id="account-container">
-                                <div id="account-avatar"><i class="fa-solid fa-check"></i></div>
+                                <div id="avatar-wrap">
+                                    <div id="account-avatar"><i id="status-icon" class="fa-solid"></i></div>
+                                    <div id="update-btn">
+                                        <button class="btn btn-outline-warning">
+                                            <i class="fa-solid fa-exclamation me-2"></i>
+                                            Update
+                                        </button>
+                                        <i class="fa-solid fa-circle-exclamation ms-2" data-bs-toggle="tooltip"
+                                            data-bs-placement="right"
+                                            title="Your identity card image is not accepted. You need to update identity card image."></i>
+                                    </div>
+                                </div>
                                 <div id="name" class="account-info"></div>
                                 <div id="birthday" class="account-info"></div>
                                 <div id="phone-number" class="account-info"></div>
                                 <div id="email" class="account-info"></div>
                                 <div id="address" class="account-info"></div>
-                                <div id="password" class="account-info">
-                                    <button class="btn btn-outline-danger">Change Password</button>
-                                </div>
+                                <div id="password" class="account-info"></div>
                             </div>
                         </div>
                     </div>
@@ -352,7 +361,8 @@
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content bg-dark">
                 <div class="modal-header flex-column">
-                    <button type="button" class="btn-close bg-danger" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close bg-danger" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                     <h4 class="modal-title mx-auto">Setting</h4>
                 </div>
                 <div class="modal-body d-flex p-0">
@@ -362,15 +372,46 @@
                     </ul>
                     <div id="setting-content">
                         <div id="general-tab">
-                            
+
                         </div>
                         <div id="about-tab">
-                            
+
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="change-password-modal" class="modal fade" data-bs-backdrop="static" aria-hidden="true" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark">
+                <div class="modal-header flex-column">
+                    <button id="close-pass-form" type="button" class="btn-close bg-danger" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                    <h4 class="modal-title mx-auto">Change Password</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group mb-2">
+                        <label for="input-current-password">Current password:</label>
+                        <input id="input-current-password" class="form-control" type="password" placeholder="Enter current password">
+                        <small id="current-pass-mes" class="text-danger"></small>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="input-new-password">New password:</label>
+                        <input id="input-new-password" class="form-control" type="password" placeholder="Enter new password">
+                        <small id="new-pass-mes" class="text-danger"></small>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="confirm-password">Confirm password:</label>
+                        <input id="confirm-password" class="form-control" type="password" placeholder="Enter new password">
+                        <small id="confirm-pass-mes" class="text-danger"></small>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="reset-pass-btn" type="button" class="btn btn-outline-primary">Reset password</button>
                 </div>
             </div>
         </div>
