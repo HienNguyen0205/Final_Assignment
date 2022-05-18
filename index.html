@@ -42,8 +42,9 @@
                         <i class="fa-solid fa-user icon"></i>
                     </li>
                 </ul>
-                <a id="setting" data-bs-toggle="tooltip" data-bs-placement="right" title="Setting">
-                    <i class="fa-solid fa-gear icon"></i>
+                <a id="setting" data-bs-toggle="modal" data-bs-target="#setting-modal">
+                    <i class="fa-solid fa-gear icon" data-bs-toggle="tooltip" data-bs-placement="right"
+                        title="Setting"></i>
                 </a>
             </div>
             <div id="main-content" class="col">
@@ -112,7 +113,7 @@
                                             <div class="d-flex align-items-center">
                                                 <div id="balance" class="me-3">$0.0</div>
                                                 <i class="fa-solid fa-eye show-pass" data-bs-toggle="tooltip"
-                                                data-bs-placement="right" title="Show/Hide Password"></i>
+                                                    data-bs-placement="right" title="Show/Hide Password"></i>
                                             </div>
                                             <h5 class="mt-3 opacity-50">Today Transaction</h5>
                                             <div>
@@ -195,7 +196,7 @@
                                         <div>$0.0</div>
                                     </li>
                                     <li class="transaction-item">
-                                        <i class="fa-solid fa-mobile-screen toUp-card-icon transaction-icon"></i>
+                                        <i class="fa-solid fa-mobile-screen topUp-card-icon transaction-icon"></i>
                                         <div>To-up Card</div>
                                         <div>$0.0</div>
                                     </li>
@@ -229,7 +230,6 @@
                                             <li><a class="dropdown-item" href="#">Withdraw</a></li>
                                             <li><a class="dropdown-item" href="#">Transfer</a></li>
                                             <li><a class="dropdown-item" href="#">Top-up Card</a></li>
-                                            <li><a class="dropdown-item" href="#">Withdraw</a></li>
                                         </ul>
                                     </div>
                                     <button class="btn btn-outline-secondary mx-2" data-bs-toggle="tooltip"
@@ -286,11 +286,91 @@
                         </div>
                     </div>
                     <div id="dashboard" class="row">
-
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="d-flex col-12">
+                                    <div class="dashboard-info income-icon">
+                                        <h5>Total income in a week</h5>
+                                        <h3 id="week-income">$ 0.0</h3>
+                                    </div>
+                                    <div class="dashboard-info spending-icon">
+                                        <h5>Total spending in a week</h5>
+                                        <h3 id="week-speding">$ 0.0</h3>
+                                    </div>
+                                    <div class="dashboard-info deposit-icon">
+                                        <h5>Total deposit in a week</h5>
+                                        <h3 id="week-deposit">$ 0.0</h3>
+                                    </div>
+                                    <div class="dashboard-info withdraw-icon">
+                                        <h5>Total withdraw in a week</h5>
+                                        <h3 id="week-withdraw">$ 0.0</h3>
+                                    </div>
+                                    <div class="dashboard-info transfer-icon">
+                                        <h5>Total transfer in a week</h5>
+                                        <h3 id="week-transfer">$ 0.0</h3>
+                                    </div>
+                                    <div class="dashboard-info topUp-card-icon">
+                                        <h5>Total top-up card in a week</h5>
+                                        <h3 id="week-card">$ 0.0</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-8">
+                                    <div id="dashboard-main-chart">
+                                        <canvas id="chart3" width="250" height="250"></canvas>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div id="dashboard-side-chart">
+                                        <canvas id="chart4" width="250" height="250"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div id="your-account" class="row">
-
+                        <div class="col-12">
+                            <div id="account-container">
+                                <div id="account-avatar"><i class="fa-solid fa-check"></i></div>
+                                <div id="name" class="account-info"></div>
+                                <div id="birthday" class="account-info"></div>
+                                <div id="phone-number" class="account-info"></div>
+                                <div id="email" class="account-info"></div>
+                                <div id="address" class="account-info"></div>
+                                <div id="password" class="account-info">
+                                    <button class="btn btn-outline-danger">Change Password</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="setting-modal" class="modal fade" data-bs-backdrop="static" aria-hidden="true" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content bg-dark">
+                <div class="modal-header flex-column">
+                    <button type="button" class="btn-close bg-danger" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h4 class="modal-title mx-auto">Setting</h4>
+                </div>
+                <div class="modal-body d-flex p-0">
+                    <ul id="setting-nav" class="d-flex flex-column">
+                        <li class="active">General</li>
+                        <li>About</li>
+                    </ul>
+                    <div id="setting-content">
+                        <div id="general-tab">
+                            
+                        </div>
+                        <div id="about-tab">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>
