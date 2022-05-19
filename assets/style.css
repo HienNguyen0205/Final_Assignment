@@ -40,6 +40,22 @@ li {
     list-style-type: none;
 }
 
+/* scrollbar */
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 6px;
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background-image: var(--gradient-bg);
+}
+
 .tooltip>.tooltip-inner {
     border: 1px solid var(--bg-light);
 }
@@ -97,7 +113,7 @@ li {
     animation: gradient 2s ease infinite;
 }
 
-#tab li:hover > .icon::before{
+#tab li:hover>.icon::before {
     opacity: .5;
 }
 
@@ -132,7 +148,7 @@ li {
     margin-bottom: 8px;
 }
 
-#setting:hover{
+#setting:hover {
     opacity: .5;
 }
 
@@ -142,18 +158,18 @@ li {
     border-right: 1px solid var(--bg-light);
 }
 
-#setting-nav > li {
+#setting-nav>li {
     transition: all .3 ease-in both;
     padding: 12px;
     width: fit-content;
 }
 
-#setting-nav > li.active {
+#setting-nav>li.active {
     color: var(--green-color);
-    
+
 }
 
-#setting-nav > li:hover{
+#setting-nav>li:hover {
     cursor: pointer;
     opacity: .5;
     transform: translateX(8px);
@@ -171,7 +187,7 @@ li {
     background-color: var(--bg-main-dark);
 }
 
-#main-content >div {
+#main-content>div {
     flex: 1;
 }
 
@@ -281,7 +297,7 @@ li {
     background-image: var(--gradient-bg);
 }
 
-.icon-wrap:hover{
+.icon-wrap:hover {
     animation: shadow-drop-2-center .3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
@@ -388,7 +404,8 @@ li {
 #table-container {
     position: relative;
     overflow-y: auto;
-    height: 465px;
+    height: 68vh;
+    margin: 12px;
 }
 
 #table thead {
@@ -430,21 +447,21 @@ li {
 
 /* your account */
 
-#your-account{
+#your-account {
     display: none;
 }
 
-#account-container{
+#account-container , #deposit-container, #withdraw-container , #transfer-container, #card-container{
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: var(--bg-dark);
     border-radius: 12px;
     padding: 12px;
-    height: 77vh;
+    height: 80vh;
 }
 
-#account-avatar{
+#account-avatar {
     height: 100px;
     width: 100px;
     margin-right: 24px;
@@ -456,11 +473,11 @@ li {
     position: relative;
 }
 
-#avatar-wrap{
+#avatar-wrap {
     position: relative;
 }
 
-#update-btn{
+#update-btn {
     display: flex;
     align-items: center;
     position: absolute;
@@ -468,7 +485,7 @@ li {
     right: -170%;
 }
 
-#status-icon{
+#status-icon {
     position: absolute;
     top: 75%;
     left: 75%;
@@ -477,14 +494,14 @@ li {
     padding: 3px;
 }
 
-.verify-tag{
+.verify-tag {
     border-radius: 8px;
     width: fit-content;
     padding: 0 6px;
     font-size: 12px;
 }
 
-.account-info{
+.account-info {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -496,11 +513,11 @@ li {
     margin-bottom: 16px;
 }
 
-.account-info:hover{
+.account-info:hover {
     border-color: var(--blue-light-color);
 }
 
-.account-info::before{
+.account-info::before {
     content: "";
     display: block;
     position: absolute;
@@ -511,26 +528,104 @@ li {
     padding: 0 8px;
 }
 
-#name::before{
+#name::before {
     content: "Name";
 }
 
-#birthday::before{
+#birthday::before {
     content: "Date of birth";
 }
 
-#phone-number::before{
+#phone-number::before {
     content: "Phone number";
 }
 
-#email::before{
+#email::before {
     content: "Email";
 }
 
-#address::before{
+#address::before {
     content: "Address";
 }
 
-#password::before{
+#password::before {
     content: "Password";
+}
+
+/* deposit function */
+
+#deposit-function, #withdraw-function , #transfer-function, #card-function{
+    display: none;
+}
+
+#deposit-container, #withdraw-container{
+    position: relative;
+}
+
+.close-btn{
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    font-size: 28px;
+    color: var(--red-color);
+    cursor: pointer;
+}
+
+.wallet-balance-wrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    background-color: var(--bg-main-dark);
+    padding: 12px 18px;
+    border-radius: 12px;
+}
+
+.info-group, .deposit-amount-wrap, .withdraw-amount-wrap, .withdraw-mes-wrap{
+    position: relative;
+    width: 75%;
+    margin: 10px 0;
+    padding: 11px 22px;
+    border: 3px solid var(--blue-input-color);
+    border-radius: 12px;
+}
+
+.info-group::before{
+    content: "Card Infomation";
+    display: block;
+    position: absolute;
+    top: -18px;
+    left: calc(50% - 71px);
+    font-size: 18px;
+    background-color: var(--bg-dark);
+    color: var(--pink-color);
+    padding: 0 12px;
+}
+
+.deposit-amount-wrap, .withdraw-amount-wrap, .withdraw-mes-wrap{
+    border-color: var(--blue-input-color);
+}
+
+.deposit-amount-wrap::before, .withdraw-amount-wrap::before{
+    content: "Amount";
+    display: block;
+    position: absolute;
+    top: -18px;
+    left: calc(50% - 45px);
+    font-size: 18px;
+    background-color: var(--bg-dark);
+    color:#00b8ff;
+    padding: 0 12px;
+}
+
+.withdraw-mes-wrap::before{
+    content: "Note";
+    display: block;
+    position: absolute;
+    top: -18px;
+    left: calc(50% - 32px);
+    font-size: 18px;
+    background-color: var(--bg-dark);
+    color:#00b8ff;
+    padding: 0 12px;
 }

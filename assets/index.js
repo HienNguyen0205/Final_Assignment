@@ -84,10 +84,10 @@ $(function () {
                     data: quantity.withdraw
                 },
                 {
-                    label: 'Tranfer',
+                    label: 'Transfer',
                     backgroundColor: bgColor[2],
                     borderColor: bgColor[2],
-                    data: quantity.tranfer
+                    data: quantity.transfer
                 },
                 {
                     label: 'Top-up Card',
@@ -145,7 +145,7 @@ $(function () {
     const pie1_bg = ['#4b961c', '#ff084a']
     const pie1_title = 'Today Income/Spending Scale'
 
-    const pie2_legend = ['Deposit', 'Withdraw', 'Tranfer', 'Top-up Card']
+    const pie2_legend = ['Deposit', 'Withdraw', 'Transfer', 'Top-up Card']
     const pie2_bg = ['#4b961c', '#ff084a', '#03396c', '#ffbf00']
     const pie2_title = 'Today Transaction Scale'
 
@@ -159,7 +159,7 @@ $(function () {
 
     const deposit = [220, 237, 808, 308, 168, 937, 429]
     const withdraw = [325, 42, 146, 617, 371, 290, 872]
-    const tranfer = [730, 113, 545, 323, 160, 379, 498]
+    const transfer = [730, 113, 545, 323, 160, 379, 498]
     const card = [920, 712, 911, 700, 70, 672, 433]
 
     createChart(chart1, 'doughnut', pieOpt(pie1_legend, pie1_bg, [40, 60], pie1_title))
@@ -167,7 +167,7 @@ $(function () {
     createChart(chart3, 'line', lineOpt(line1_legend, line1_bg, {
         deposit,
         withdraw,
-        tranfer,
+        transfer,
         card
     }, line1_title))
     createChart(chart4, 'doughnut', pieOpt(pie3_legend, pie3_bg, [60, 40], pie3_title))
@@ -177,10 +177,12 @@ $(function () {
     let currShow = 'home'
 
     function showSection(btn, section) {
+        console.log(currShow)
         $('#' + section.replace(' ', '-').toLowerCase()).fadeIn()
         $('#section-name').text(section)
         $('#section-expand').text('')
         $('#' + currShow + '-btn > i').removeClass('icon-active')
+        if(section == 'History' || section == 'Dashboard' || section == 'Your Account') $('#home-btn>i').removeClass('icon-active')
         btn.children().addClass('icon-active')
         currShow = section.replace(' ', '-').toLowerCase()
     }
@@ -209,27 +211,87 @@ $(function () {
         })
     })
 
-    // show/hide password
+    // show/hide balance
 
     let flag = true
     let balance = $('#balance').text()
-    passwordHandle()
+    balanceHandle()
 
-    function passwordHandle() {
+    function balanceHandle() {
         if (flag) {
             $('#balance').text('*'.repeat(balance.length))
-            $('.show-pass').addClass('fa-eye-slash')
-            $('.show-pass').removeClass('fa-eye')
+            $('.show-balance').addClass('fa-eye')
+            $('.show-balance').removeClass('fa-eye-slash')
         } else {
             $('#balance').text(balance)
-            $('.show-pass').addClass('fa-eye')
-            $('.show-pass').removeClass('fa-eye-slash')
+            $('.show-balance').addClass('fa-eye-slash')
+            $('.show-balance').removeClass('fa-eye')
         }
     }
 
-    $('.show-pass').click(function () {
-        passwordHandle()
+    $('.show-balance').click(function () {
+        balanceHandle()
         flag = !flag
+    })
+
+    // history and lasted transaction handle 
+
+    const histories = [
+        {name: 'deposit', status: 'success', time: '00/00/0000', balance: 0.0, amount: 0.0},
+        {name: 'withdraw', status: 'waiting', time: '00/00/0000', balance: 0.0, amount: 0.0},
+        {name: 'transfer', status: 'fail', time: '00/00/0000', balance: 0.0, amount: 0.0},
+        {name: 'withdraw', status: 'waiting', time: '00/00/0000', balance: 0.0, amount: 0.0},
+        {name: 'withdraw', status: 'waiting', time: '00/00/0000', balance: 0.0, amount: 0.0},
+        {name: 'withdraw', status: 'waiting', time: '00/00/0000', balance: 0.0, amount: 0.0},
+        {name: 'withdraw', status: 'waiting', time: '00/00/0000', balance: 0.0, amount: 0.0},
+        {name: 'withdraw', status: 'waiting', time: '00/00/0000', balance: 0.0, amount: 0.0},
+    ]
+
+    histories.forEach((history,index) => {
+        let icon = ''
+        let statusColor = ''
+
+        if(history.name == 'deposit'){
+            icon = 'fa-arrow-right-to-bracket deposit-icon'
+        }else if(history.name == 'withdraw'){
+            icon = 'fa-dollar-sign withdraw-icon'
+        }else if (history.name == 'transfer'){
+            icon = 'fa-money-bill-transfer transfer-icon'
+        }else{
+            icon = 'fa-mobile-screen topUp-card-icon'
+        }
+
+        if(history.status == 'success'){
+            statusColor = 'var(--green-color);'
+        }else if (history.status == 'waiting'){
+            statusColor = 'var(--blue-input-color);'
+        }else{
+            statusColor = 'var(--red-color);'
+        }
+
+        $('#history-list').append(
+            `<tr>`
+                + `<td class="d-flex align-items-center">`
+                    + `<i`
+                        + ` class="fa-solid ${icon} transaction-icon me-3"></i>`
+                        + `${history.name}`
+                + `</td>`
+                + `<td style="color: ${statusColor}">${history.status}</td>`
+                + `<td>${history.time}</td>`
+                + `<td class="balance-history">$${history.balance}</td>`
+                + `<td>$${history.amount}</td>`
+            + `</tr>`
+        )
+
+        if(index < 6){
+            $('.transaction-list').append(
+                `<li class="transaction-item">`
+                    + `<i class="fa-solid ${icon} transaction-icon"></i>`
+                    + `<div>${history.name}</div>`
+                    + `<div>$${history.amount}</div>`
+                + `</li>`
+            )
+        }
     })
 
     //section name handle
@@ -239,12 +301,34 @@ $(function () {
         if ($('#section-expand').text() != '') {
             $('#' + sectionName).fadeIn()
             $('#section-expand').text('')
+            $('#deposit-function').fadeOut(200)
+            $('#withdraw-function').fadeOut(200)
+            $('#transfer-function').fadeOut(200)
+            $('#card-function').fadeOut(200)
         }
     })
 
     function showFunction(name) {
         $('#section-expand').text(' > ' + name)
-        $('#home').fadeOut()
+        $('#deposit-function').fadeOut(200)
+        $('#withdraw-function').fadeOut(200)
+        $('#transfer-function').fadeOut(200)
+        $('#card-function').fadeOut(200)
+        $('#home').fadeOut(200,function(){
+            if(name == 'Deposit'){
+                $('#deposit-function').fadeIn()
+                currShow = 'deposit-function'
+            }else if (name == 'Withdraw'){
+                $('#withdraw-function').fadeIn()
+                currShow = 'withdraw-function'
+            }else if (name == 'Transfer'){
+                $('#transfer-function').fadeIn()
+                currShow = 'transfer-function'
+            }else{
+                $('#card-function').fadeIn()
+                currShow = 'card-function'
+            }
+        })
     }
 
     // deposit handle
@@ -259,10 +343,10 @@ $(function () {
         showFunction('Withdraw')
     })
 
-    // tranfer handle
+    // transfer handle
 
-    $('#tranfer').click(function () {
-        showFunction('Tranfer')
+    $('#transfer').click(function () {
+        showFunction('Transfer')
     })
 
     // deposit handle
@@ -358,6 +442,14 @@ $(function () {
         $('#current-pass-mes').text('')
         $('#new-pass-mes').text('')
         $('#confirm-pass-mes').text('')
+    })
+
+    // avatar opt
+
+    $('#avatar-account').click(function (){
+        $('#' + currShow).fadeOut(200, function () {
+            showSection($('#your-account-btn'), 'Your Account')
+        })
     })
 
 })
