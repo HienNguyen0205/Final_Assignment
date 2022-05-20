@@ -66,6 +66,7 @@ li {
 
 #main-container {
     max-height: 100vh;
+    position: relative;
 }
 
 /* sidebar */
@@ -558,7 +559,7 @@ li {
     display: none;
 }
 
-#deposit-container, #withdraw-container{
+#deposit-container, #withdraw-container, #transfer-container, #card-container{
     position: relative;
 }
 
@@ -577,55 +578,64 @@ li {
     justify-content: center;
     font-size: 18px;
     background-color: var(--bg-main-dark);
-    padding: 12px 18px;
+    padding: 8px 16px;
     border-radius: 12px;
 }
 
-.info-group, .deposit-amount-wrap, .withdraw-amount-wrap, .withdraw-mes-wrap{
+.info-group, .mes-wrap, .amount-wrap{
     position: relative;
     width: 75%;
     margin: 10px 0;
-    padding: 11px 22px;
+    padding: 7px 14px;
     border: 3px solid var(--blue-input-color);
     border-radius: 12px;
 }
 
 .info-group::before{
-    content: "Card Infomation";
     display: block;
     position: absolute;
     top: -18px;
-    left: calc(50% - 71px);
     font-size: 18px;
     background-color: var(--bg-dark);
     color: var(--pink-color);
     padding: 0 12px;
 }
 
-.deposit-amount-wrap, .withdraw-amount-wrap, .withdraw-mes-wrap{
-    border-color: var(--blue-input-color);
+.deposit-info::before, .withdraw-info::before{
+    content: "Card Infomation";
+    left: calc(50% - 71px);
 }
 
-.deposit-amount-wrap::before, .withdraw-amount-wrap::before{
+.transfer-info::before{
+    content: "Receiver's Information";
+    left: calc(50% - 100px);
+}
+
+.deposit-amount::before, .withdraw-amount::before, .transfer-amount::before{
     content: "Amount";
-    display: block;
-    position: absolute;
-    top: -18px;
     left: calc(50% - 45px);
-    font-size: 18px;
-    background-color: var(--bg-dark);
     color:#00b8ff;
-    padding: 0 12px;
 }
 
-.withdraw-mes-wrap::before{
+.mes-wrap::before{
     content: "Note";
+    left: calc(50% - 32px);
+    color:#00b8ff;
+}
+
+#receiver-name::before{
+    content: "Receiver's Name:";
     display: block;
     position: absolute;
-    top: -18px;
-    left: calc(50% - 32px);
-    font-size: 18px;
-    background-color: var(--bg-dark);
-    color:#00b8ff;
-    padding: 0 12px;
+    top: -32px;
+    left: 0;
+    color: var(--text-color);
+}
+
+#mes{
+    position: absolute;
+    max-width: 300px;
+    font-size: 16px;
+    top: 15%;
+    right: 24px;
 }

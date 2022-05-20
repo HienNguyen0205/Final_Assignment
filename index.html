@@ -81,7 +81,8 @@
                                                 Your Account</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#setting-modal">
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                                data-bs-target="#setting-modal">
                                                 <i class="fa-solid fa-gear"></i>
                                                 Settings</a>
                                         </li>
@@ -99,8 +100,8 @@
                 <div class="container-fluid">
                     <div class="row mt-3">
                         <div class="col">
-                            <h2 id="section-name" class="d-inline-block" section-name="home">Home</h2>
-                            <h2 id="section-expand" class="d-inline-block"></h2>
+                            <h2 id="section-name" class="d-inline-block">Home</h2>
+                            <h2 id="section-expand" class="d-inline-block" style="opacity: 0.5;"></h2>
                         </div>
                     </div>
                     <div id="home" class="row">
@@ -111,7 +112,7 @@
                                         <div id="balance-info">
                                             <h5 class="mt-2 opacity-50">Current Balance</h5>
                                             <div class="d-flex align-items-center">
-                                                <div id="balance" class="me-3">$0.0</div>
+                                                <div id="balance" class="me-3">0.0 đ</div>
                                                 <i class="fa-solid fa-eye show-balance" data-bs-toggle="tooltip"
                                                     data-bs-placement="right" title="Show/Hide Password"></i>
                                             </div>
@@ -120,12 +121,12 @@
                                                 <div class="d-flex align-items-center mt-3" data-bs-toggle="tooltip"
                                                     data-bs-placement="left" title="Income">
                                                     <i id="increase-icon" class="fa-solid fa-arrow-up icon me-3"></i>
-                                                    <div id="increase-quantity">$0.0</div>
+                                                    <div id="increase-quantity">0.0 đ</div>
                                                 </div>
                                                 <div class="d-flex align-items-center mt-3" data-bs-toggle="tooltip"
                                                     data-bs-placement="left" title="Spending">
                                                     <i id="descrease-icon" class="fa-solid fa-arrow-down icon me-3"></i>
-                                                    <div id="descrease-quantity">$0.0</div>
+                                                    <div id="descrease-quantity">0.0 đ</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -191,7 +192,7 @@
                                         <button id="filter" class="btn btn-outline-primary" data-bs-toggle="dropdown"
                                             aria-expanded="false">
                                             <i class="fa-solid fa-filter" data-bs-toggle="tooltip"
-                                            data-bs-placement="bottom" title="filter"></i>
+                                                data-bs-placement="bottom" title="filter"></i>
                                         </button>
                                         <ul id="filter-list" class="dropdown-menu dropdown-menu-end mt-2"
                                             aria-labelledby="filter">
@@ -229,27 +230,27 @@
                                 <div class="d-flex col-12">
                                     <div class="dashboard-info income-icon">
                                         <h5>Total income in a week</h5>
-                                        <h3 id="week-income">$ 0.0</h3>
+                                        <h3 id="week-income">0.0 đ</h3>
                                     </div>
                                     <div class="dashboard-info spending-icon">
                                         <h5>Total spending in a week</h5>
-                                        <h3 id="week-speding">$ 0.0</h3>
+                                        <h3 id="week-speding">0.0 đ</h3>
                                     </div>
                                     <div class="dashboard-info deposit-icon">
                                         <h5>Total deposit in a week</h5>
-                                        <h3 id="week-deposit">$ 0.0</h3>
+                                        <h3 id="week-deposit">0.0 đ</h3>
                                     </div>
                                     <div class="dashboard-info withdraw-icon">
                                         <h5>Total withdraw in a week</h5>
-                                        <h3 id="week-withdraw">$ 0.0</h3>
+                                        <h3 id="week-withdraw">0.0 đ</h3>
                                     </div>
                                     <div class="dashboard-info transfer-icon">
                                         <h5>Total transfer in a week</h5>
-                                        <h3 id="week-transfer">$ 0.0</h3>
+                                        <h3 id="week-transfer">0.0 đ</h3>
                                     </div>
                                     <div class="dashboard-info topUp-card-icon">
                                         <h5>Total top-up card in a week</h5>
-                                        <h3 id="week-card">$ 0.0</h3>
+                                        <h3 id="week-card">0.0 đ</h3>
                                     </div>
                                 </div>
                             </div>
@@ -273,7 +274,8 @@
                                 <div id="avatar-wrap">
                                     <div id="account-avatar"><i id="status-icon" class="fa-solid"></i></div>
                                     <div id="update-btn">
-                                        <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#update-identity-modal">
+                                        <button class="btn btn-outline-warning" data-bs-toggle="modal"
+                                            data-bs-target="#update-identity-modal">
                                             <i class="fa-solid fa-exclamation me-2"></i>
                                             Update
                                         </button>
@@ -295,42 +297,46 @@
                         <div class="col-sm-12 col-lg-8 d-flex flex-column mx-auto">
                             <div id="deposit-container">
                                 <i class="fa-solid fa-square-xmark close-btn"></i>
-                                <div class="wallet-balance-wrap my-3">
+                                <div class="wallet-balance-wrap my-1">
                                     <i class="fa-solid fa-sack-dollar me-2"></i>
                                     Wallet balance:
-                                    <div class="wallet-balance ms-2">$0.0</div>
+                                    <div class="wallet-balance ms-2">0.0 đ</div>
                                 </div>
-                                <div class="info-group">
-                                    <div class="form-group mb-2">
+                                <div class="info-group deposit-info">
+                                    <div class="form-group">
                                         <label for="deposit-card-number" class="mb-2">Card Number:</label>
                                         <div class="input-group">
-                                            <input id="deposit-card-number" class="form-control" type="text" placeholder="Enter card number">
+                                            <input id="deposit-card-number" class="form-control" type="text"
+                                                placeholder="Enter card number">
                                         </div>
                                         <small id="deposit-card-number-mes" class="text-danger"></small>
                                     </div>
-                                    <div class="form-group mb-2">
+                                    <div class="form-group">
                                         <label for="deposit-expiration-date" class="mb-2">Expiration Date:</label>
                                         <div class="input-group">
                                             <input id="deposit-expiration-date" class="form-control" type="date">
                                         </div>
+                                        <small id="deposit-expiration-date-mes" class="text-danger"></small>
                                     </div>
-                                    <div class="form-group mb-2">
+                                    <div class="form-group">
                                         <label for="deposit-cvv-code" class="mb-2">CVV:</label>
                                         <div class="input-group">
-                                            <input id="deposit-cvv-code" class="form-control" type="text" placeholder="Enter CVV code">
+                                            <input id="deposit-cvv-code" class="form-control" type="text"
+                                                placeholder="Enter CVV code">
                                         </div>
                                         <small id="deposit-cvv-mes" class="text-danger"></small>
                                     </div>
                                 </div>
-                                <div class="deposit-amount-wrap">
+                                <div class="info-group amount-wrap deposit-amount">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input id="deposit-amount" class="form-control" type="text" placeholder="Enter amount">
+                                            <input id="deposit-amount" class="form-control" type="text"
+                                                placeholder="Enter amount">
                                         </div>
                                         <small id="deposit-amount-mes" class="text-danger"></small>
                                     </div>
                                 </div>
-                                <button id="deposit-btn" class="btn btn-lg btn-outline-success">Deposit</button>
+                                <button id="deposit-btn" class="btn btn-outline-success">Deposit</button>
                             </div>
                         </div>
                     </div>
@@ -341,13 +347,14 @@
                                 <div class="wallet-balance-wrap my-1">
                                     <i class="fa-solid fa-sack-dollar me-2"></i>
                                     Wallet balance:
-                                    <div class="wallet-balance ms-2">$0.0</div>
+                                    <div class="wallet-balance ms-2">0.0 đ</div>
                                 </div>
-                                <div class="info-group">
+                                <div class="info-group withdraw-info">
                                     <div class="form-group mb-2">
                                         <label for="withdraw-card-number" class="mb-2">Card Number:</label>
                                         <div class="input-group">
-                                            <input id="withdraw-card-number" class="form-control" type="text" placeholder="Enter card number">
+                                            <input id="withdraw-card-number" class="form-control" type="text"
+                                                placeholder="Enter card number">
                                         </div>
                                         <small id="withdraw-card-number-mes" class="text-danger"></small>
                                     </div>
@@ -360,23 +367,26 @@
                                     <div class="form-group mb-2">
                                         <label for="withdraw-cvv-code" class="mb-2">CVV:</label>
                                         <div class="input-group">
-                                            <input id="withdraw-cvv-code" class="form-control" type="text" placeholder="Enter CVV code">
+                                            <input id="withdraw-cvv-code" class="form-control" type="text"
+                                                placeholder="Enter CVV code">
                                         </div>
                                         <small id="withdraw-cvv-mes" class="text-danger"></small>
                                     </div>
                                 </div>
-                                <div class="withdraw-amount-wrap">
+                                <div class="info-group amount-wrap withdraw-amount">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input id="withdraw-amount" class="form-control" type="text" placeholder="Enter amount">
+                                            <input id="withdraw-amount" class="form-control" type="text"
+                                                placeholder="Enter amount">
                                         </div>
                                         <small id="withdraw-amount-mes" class="text-danger"></small>
                                     </div>
                                 </div>
-                                <div class="withdraw-mes-wrap">
+                                <div class="info-group mes-wrap withdraw-mes">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input id="withdraw-mes" class="form-control" type="text" placeholder="Enter note">
+                                            <input id="withdraw-mes" class="form-control" type="text"
+                                                placeholder="Enter note">
                                         </div>
                                     </div>
                                 </div>
@@ -385,12 +395,95 @@
                         </div>
                     </div>
                     <div id="transfer-function" class="row">
-
+                        <div class="col-sm-12 col-lg-8 d-flex flex-column mx-auto">
+                            <div id="transfer-container">
+                                <i class="fa-solid fa-square-xmark close-btn"></i>
+                                <div class="wallet-balance-wrap my-1">
+                                    <i class="fa-solid fa-sack-dollar me-2"></i>
+                                    Wallet balance:
+                                    <div class="wallet-balance ms-2">0.0 đ</div>
+                                </div>
+                                <div class="info-group transfer-info">
+                                    <div class="form-group">
+                                        <label for="transfer-card-number" class="mb-2">Phone number:</label>
+                                        <div class="input-group">
+                                            <input id="transfer-card-number" class="form-control" type="text"
+                                                placeholder="Enter phone number">
+                                            <div id="receiver-name" class="form-control"></div>
+                                        </div>
+                                        <small id="transfer-card-number-mes" class="text-danger"></small>
+                                    </div>
+                                </div>
+                                <div class="info-group amount-wrap transfer-amount">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input id="transfer-amount" class="form-control" type="text"
+                                                placeholder="Enter amount">
+                                        </div>
+                                        <small id="transfer-amount-mes" class="text-danger"></small>
+                                    </div>
+                                </div>
+                                <div class="info-group mes-wrap">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input id="transfer-mes" class="form-control" type="text"
+                                                placeholder="Enter note">
+                                        </div>
+                                    </div>
+                                </div>
+                                <button id="transfer-btn" class="btn btn-outline-primary">Transfer</button>
+                            </div>
+                        </div>
                     </div>
                     <div id="card-function" class="row">
-
+                        <div class="col-sm-12 col-lg-8 d-flex flex-column mx-auto">
+                            <div id="card-container">
+                                <i class="fa-solid fa-square-xmark close-btn"></i>
+                                <div class="wallet-balance-wrap my-1">
+                                    <i class="fa-solid fa-sack-dollar me-2"></i>
+                                    Wallet balance:
+                                    <div class="wallet-balance ms-2">0.0 đ</div>
+                                </div>
+                                <div class="info-group card-info">
+                                    <div class="form-group mb-2">
+                                        <label for="card-network" class="mb-2">Choose Network:</label>
+                                        <select id="card-network" class="form-select">
+                                            <option value="viettel" selected>Viettel</option>
+                                            <option value="mobiphone">Mobiphone</option>
+                                            <option value="vinaphone">Vinaphone</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group mb-2">
+                                        <label for="card-price" class="mb-2">Choose price:</label>
+                                        <select id="card-price" class="form-select">
+                                            <option value="10000" selected>10.000đ</option>
+                                            <option value="20000">20.000đ</option>
+                                            <option value="50000">50.000đ</option>
+                                            <option value="100000">100.000đ</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group mb-2">
+                                        <label for="card-quantity" class="mb-2">Choose quantity:</label>
+                                        <select id="card-quantity" class="form-select">
+                                            <option value="1" selected>1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button id="card-btn" class="btn btn-outline-danger">Top-up Card</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div id="mes" class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div id="message" class="toast-body"></div>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
         </div>
     </div>
@@ -434,7 +527,8 @@
                     <div class="form-group mb-2">
                         <label for="input-current-password" class="mb-2">Current password:</label>
                         <div class="input-group">
-                            <input id="input-current-password" class="form-control" type="password" placeholder="Enter current password">
+                            <input id="input-current-password" class="form-control" type="password"
+                                placeholder="Enter current password">
                             <span class="input-group-text"></span>
                         </div>
                         <small id="current-pass-mes" class="text-danger"></small>
@@ -442,7 +536,8 @@
                     <div class="form-group mb-2">
                         <label for="input-new-password" class="mb-2">New password:</label>
                         <div class="input-group">
-                            <input id="input-new-password" class="form-control" type="password" placeholder="Enter new password">
+                            <input id="input-new-password" class="form-control" type="password"
+                                placeholder="Enter new password">
                             <span class="input-group-text"></span>
                         </div>
                         <small id="new-pass-mes" class="text-danger"></small>
@@ -450,7 +545,8 @@
                     <div class="form-group mb-2">
                         <label for="confirm-password" class="mb-2">Confirm password:</label>
                         <div class="input-group">
-                            <input id="confirm-password" class="form-control" type="password" placeholder="Enter new password">
+                            <input id="confirm-password" class="form-control" type="password"
+                                placeholder="Enter new password">
                             <span class="input-group-text"></span>
                         </div>
                         <small id="confirm-pass-mes" class="text-danger"></small>
@@ -472,15 +568,17 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group mb-2">
-                        <label for="input-current-password" class="mb-2">:</label>
-                        <div class="input-group">
-                            <input id="front-identity-card" class="form-control" type="file" accept="image/jpeg, image/png">
+                        <label for="input-current-password" class="mb-2">Front Side:</label>
+                        <div id="font-side" class="input-group">
+                            <input id="front-identity-card" class="form-control" type="file"
+                                accept="image/jpeg, image/png">
                         </div>
                     </div>
                     <div class="form-group mb-2">
-                        <label for="input-new-password" class="mb-2">:</label>
-                        <div class="input-group">
-                            <input id="back-identity-card" class="form-control" type="file" accept="image/jpeg, image/png">
+                        <label for="input-new-password" class="mb-2">Back Side:</label>
+                        <div id="back-side" class="input-group">
+                            <input id="back-identity-card" class="form-control" type="file"
+                                accept="image/jpeg, image/png">
                         </div>
                     </div>
                 </div>

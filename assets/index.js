@@ -11,6 +11,7 @@ $(function () {
         $('#date').text(date)
         $('#time').text(time)
     }
+    dateTimeHandle()
     setInterval(dateTimeHandle, 1000)
     // Chart
 
@@ -177,7 +178,6 @@ $(function () {
     let currShow = 'home'
 
     function showSection(btn, section) {
-        console.log(currShow)
         $('#' + section.replace(' ', '-').toLowerCase()).fadeIn()
         $('#section-name').text(section)
         $('#section-expand').text('')
@@ -213,12 +213,12 @@ $(function () {
 
     // show/hide balance
 
-    let flag = true
+    let flagBalance = true
     let balance = $('#balance').text()
     balanceHandle()
 
     function balanceHandle() {
-        if (flag) {
+        if (flagBalance) {
             $('#balance').text('*'.repeat(balance.length))
             $('.show-balance').addClass('fa-eye')
             $('.show-balance').removeClass('fa-eye-slash')
@@ -231,7 +231,7 @@ $(function () {
 
     $('.show-balance').click(function () {
         balanceHandle()
-        flag = !flag
+        flagBalance = !flagBalance
     })
 
     // history and lasted transaction handle 
@@ -247,73 +247,88 @@ $(function () {
         {name: 'withdraw', status: 'waiting', time: '00/00/0000', balance: 0.0, amount: 0.0},
     ]
 
-    histories.forEach((history,index) => {
-        let icon = ''
-        let statusColor = ''
+    function updateHistory() {
 
-        if(history.name == 'deposit'){
-            icon = 'fa-arrow-right-to-bracket deposit-icon'
-        }else if(history.name == 'withdraw'){
-            icon = 'fa-dollar-sign withdraw-icon'
-        }else if (history.name == 'transfer'){
-            icon = 'fa-money-bill-transfer transfer-icon'
-        }else{
-            icon = 'fa-mobile-screen topUp-card-icon'
-        }
+        $.ajax({
+            url: '',
 
-        if(history.status == 'success'){
-            statusColor = 'var(--green-color);'
-        }else if (history.status == 'waiting'){
-            statusColor = 'var(--blue-input-color);'
-        }else{
-            statusColor = 'var(--red-color);'
-        }
+        })
 
-        $('#history-list').append(
-            `<tr>`
-                + `<td class="d-flex align-items-center">`
-                    + `<i`
-                        + ` class="fa-solid ${icon} transaction-icon me-3"></i>`
-                        + `${history.name}`
-                + `</td>`
-                + `<td style="color: ${statusColor}">${history.status}</td>`
-                + `<td>${history.time}</td>`
-                + `<td class="balance-history">$${history.balance}</td>`
-                + `<td>$${history.amount}</td>`
-            + `</tr>`
-        )
+        $('#history-list').html('')
 
-        if(index < 6){
-            $('.transaction-list').append(
-                `<li class="transaction-item">`
-                    + `<i class="fa-solid ${icon} transaction-icon"></i>`
-                    + `<div>${history.name}</div>`
-                    + `<div>$${history.amount}</div>`
-                + `</li>`
+        histories.forEach((history,index) => {
+            let icon = ''
+            let statusColor = ''
+    
+            if(history.name == 'deposit'){
+                icon = 'fa-arrow-right-to-bracket deposit-icon'
+            }else if(history.name == 'withdraw'){
+                icon = 'fa-dollar-sign withdraw-icon'
+            }else if (history.name == 'transfer'){
+                icon = 'fa-money-bill-transfer transfer-icon'
+            }else{
+                icon = 'fa-mobile-screen topUp-card-icon'
+            }
+    
+            if(history.status == 'success'){
+                statusColor = 'var(--green-color);'
+            }else if (history.status == 'waiting'){
+                statusColor = 'var(--blue-input-color);'
+            }else{
+                statusColor = 'var(--red-color);'
+            }
+    
+            $('#history-list').append(
+                `<tr>`
+                    + `<td class="d-flex align-items-center">`
+                        + `<i`
+                            + ` class="fa-solid ${icon} transaction-icon me-3"></i>`
+                            + `${history.name}`
+                    + `</td>`
+                    + `<td style="color: ${statusColor}">${history.status}</td>`
+                    + `<td>${history.time}</td>`
+                    + `<td class="balance-history">${history.balance}đ</td>`
+                    + `<td>$${history.amount}</td>`
+                + `</tr>`
             )
-        }
-    })
+    
+            if(index < 6){
+                $('.transaction-list').append(
+                    `<li class="transaction-item">`
+                        + `<i class="fa-solid ${icon} transaction-icon"></i>`
+                        + `<div>${history.name}</div>`
+                        + `<div>${history.amount}đ</div>`
+                    + `</li>`
+                )
+            }
+        })
+    }
+
+    updateHistory()
 
     //section name handle
 
-    $('#section-name').click(function () {
-        const sectionName = $('#section-name').attr('section-name')
+    function showHome() {
+        $('#home').fadeIn()
+        currShow = 'home'
+    }
+
+    function hideSection() {
         if ($('#section-expand').text() != '') {
-            $('#' + sectionName).fadeIn()
+            $('#' + currShow).fadeOut(200, function (){
+                showHome()
+            })
             $('#section-expand').text('')
-            $('#deposit-function').fadeOut(200)
-            $('#withdraw-function').fadeOut(200)
-            $('#transfer-function').fadeOut(200)
-            $('#card-function').fadeOut(200)
         }
+    }
+
+    $('#section-name').click(function () {
+        hideSection()
+        resetMes()
     })
 
     function showFunction(name) {
         $('#section-expand').text(' > ' + name)
-        $('#deposit-function').fadeOut(200)
-        $('#withdraw-function').fadeOut(200)
-        $('#transfer-function').fadeOut(200)
-        $('#card-function').fadeOut(200)
         $('#home').fadeOut(200,function(){
             if(name == 'Deposit'){
                 $('#deposit-function').fadeIn()
@@ -452,4 +467,90 @@ $(function () {
         })
     })
 
+    // message handle
+
+    function resetMes() {
+        $('#deposit-card-number-mes').text('')
+        $('#deposit-expiration-date-mes').text('')
+        $('#deposit-cvv-mes').text('')
+        $('#deposit-amount-mes').text('')
+    }
+
+    function showMes(message, type){
+        if(type == 'success'){
+            $('#mes').css('backgroundColor','#4b961c')
+        }else{
+            $('#mes').css('backgroundColor','#ff084a')
+        }
+        $('#message').text(message)
+        $('#mes').toast('show')
+    }
+
+    // deposit function handle
+
+    $('.close-btn').click(function (){
+        hideSection()
+        resetMes()
+    })
+
+    function validateCardInfo(number, date, cvv, amount){
+
+        amount = Number(amount)
+        const numberOnly = /^[0-9]{6,}$/
+        const cvvNumber = /^[0-9]{3,}$/
+        let flagCardInfo = true
+
+        if(!numberOnly.test(number)){
+            $('#deposit-card-number-mes').text('Card number must contain 6 number')
+            flagCardInfo = false
+        }else{
+            $('#deposit-card-number-mes').text('')
+        }
+        if(date == ''){
+            $('#deposit-expiration-date-mes').text('Please enter expiration date')
+        }else{
+            $('#deposit-expiration-date-mes').text('')
+        }
+        if(!cvvNumber.test(cvv)){
+            $('#deposit-cvv-mes').text('CVV code must contain 3 number')
+            flagCardInfo = false
+        }else{
+            $('#deposit-cvv-mes').text('')
+        }
+        if(amount <= 0 || Number.isNaN(amount) || !Number.isInteger(amount)){
+            $('#deposit-amount-mes').text('Invalid amount')
+            flagCardInfo = false
+        }else{
+            $('#deposit-amount-mes').text('')
+        }
+        return flagCardInfo
+    }
+
+    $('#deposit-btn').click(function (){
+        const cardNumber = $('#deposit-card-number').val()
+        const expirationDate = $('#deposit-expiration-date').val()
+        const cvvCode = $('#deposit-cvv-code').val()
+        const depositAmount = $('#deposit-amount').val()
+        if(validateCardInfo(cardNumber,expirationDate,cvvCode,depositAmount)){
+            $.ajax({
+                url: '',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    email: email,
+                    cardnumber: cardNumber,
+                    expdate: expirationDate,
+                    cvv: cvvCode,
+                    amount: depositAmount
+                }
+            })
+            .done(function(data){
+                updateHistory()
+                showMes(data.data, 'success')
+            })
+            .fail(function(data){
+                showMes(data.data, 'error')
+            })
+        }
+    })
 })
