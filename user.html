@@ -14,7 +14,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img//favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/img//favicon-16x16.png">
     <link rel="manifest" href="assets/img//site.webmanifest">
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="style.css">
     <title>E-wallet</title>
 </head>
 
@@ -55,18 +55,6 @@
                                 <div id="date-time" class="me-auto">
                                     <h5 id="date"></h5>
                                     <h6 id="time"></h6>
-                                </div>
-                                <div class="dropdown">
-                                    <button id="notification" class="btn btn-outline-primary mx-4"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa-solid fa-bell"></i>
-                                    </button>
-                                    <ul id="notification-list" class="dropdown-menu dropdown-menu-end mt-2"
-                                        aria-labelledby="notification">
-                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                    </ul>
                                 </div>
                                 <div class="dropdown d-flex align-items-center">
                                     <div id="user-wrap">
@@ -187,26 +175,6 @@
                     <div id="history" class="row">
                         <div class="col-12">
                             <div id="history-container">
-                                <div class="d-flex justify-content-end">
-                                    <div class="dropdown mx-2">
-                                        <button id="filter" class="btn btn-outline-primary" data-bs-toggle="dropdown"
-                                            aria-expanded="false">
-                                            <i class="fa-solid fa-filter" data-bs-toggle="tooltip"
-                                                data-bs-placement="bottom" title="filter"></i>
-                                        </button>
-                                        <ul id="filter-list" class="dropdown-menu dropdown-menu-end mt-2"
-                                            aria-labelledby="filter">
-                                            <li><a class="dropdown-item" value="all">All</a></li>
-                                            <li><a class="dropdown-item" value="deposit">Deposit</a></li>
-                                            <li><a class="dropdown-item" value="withdraw">Withdraw</a></li>
-                                            <li><a class="dropdown-item" value="transfer">Transfer</a></li>
-                                            <li><a class="dropdown-item" value="card">Top-up Card</a></li>
-                                        </ul>
-                                    </div>
-                                    <button class="btn btn-outline-secondary mx-2 p-0" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="Show/Hide Password"><i
-                                            class="fa-solid show-balance p-2"></i></button>
-                                </div>
                                 <div id="table-container">
                                     <table id="table" class="table table-dark table-hover">
                                         <thead>
@@ -214,7 +182,6 @@
                                                 <th>Name</th>
                                                 <th>Status</th>
                                                 <th>Day & Time</th>
-                                                <th>Wallet Balance</th>
                                                 <th>Amount</th>
                                             </tr>
                                         </thead>
@@ -272,17 +239,7 @@
                         <div class="col-12">
                             <div id="account-container">
                                 <div id="avatar-wrap">
-                                    <div id="account-avatar"><i id="status-icon" class="fa-solid"></i></div>
-                                    <div id="update-btn">
-                                        <button class="btn btn-outline-warning" data-bs-toggle="modal"
-                                            data-bs-target="#update-identity-modal">
-                                            <i class="fa-solid fa-exclamation me-2"></i>
-                                            Update
-                                        </button>
-                                        <i class="fa-solid fa-circle-exclamation ms-2" data-bs-toggle="tooltip"
-                                            data-bs-placement="right"
-                                            title="Your identity card image is not accepted. You need to update identity card image."></i>
-                                    </div>
+                                    <div id="account-avatar"><i id="status-icon" class="fa-solid fa-circle-check text-success"></i></div>
                                 </div>
                                 <div id="name" class="account-info"></div>
                                 <div id="birthday" class="account-info"></div>
@@ -316,7 +273,6 @@
                                         <div class="input-group">
                                             <input id="deposit-expiration-date" class="form-control" type="date">
                                         </div>
-                                        <small id="deposit-expiration-date-mes" class="text-danger"></small>
                                     </div>
                                     <div class="form-group">
                                         <label for="deposit-cvv-code" class="mb-2">CVV:</label>
@@ -350,7 +306,7 @@
                                     <div class="wallet-balance ms-2">0.0 đ</div>
                                 </div>
                                 <div class="info-group withdraw-info">
-                                    <div class="form-group mb-2">
+                                    <div class="form-group">
                                         <label for="withdraw-card-number" class="mb-2">Card Number:</label>
                                         <div class="input-group">
                                             <input id="withdraw-card-number" class="form-control" type="text"
@@ -358,13 +314,13 @@
                                         </div>
                                         <small id="withdraw-card-number-mes" class="text-danger"></small>
                                     </div>
-                                    <div class="form-group mb-2">
+                                    <div class="form-group">
                                         <label for="withdraw-expiration-date" class="mb-2">Expiration Date:</label>
                                         <div class="input-group">
                                             <input id="withdraw-expiration-date" class="form-control" type="date">
                                         </div>
                                     </div>
-                                    <div class="form-group mb-2">
+                                    <div class="form-group">
                                         <label for="withdraw-cvv-code" class="mb-2">CVV:</label>
                                         <div class="input-group">
                                             <input id="withdraw-cvv-code" class="form-control" type="text"
@@ -405,13 +361,28 @@
                                 </div>
                                 <div class="info-group transfer-info">
                                     <div class="form-group">
-                                        <label for="transfer-card-number" class="mb-2">Phone number:</label>
+                                        <label for="transfer-phone-number" class="mb-2">Phone number:</label>
                                         <div class="input-group">
-                                            <input id="transfer-card-number" class="form-control" type="text"
+                                            <input id="transfer-phone-number" class="form-control" type="text"
                                                 placeholder="Enter phone number">
                                             <div id="receiver-name" class="form-control"></div>
                                         </div>
-                                        <small id="transfer-card-number-mes" class="text-danger"></small>
+                                        <small id="transfer-phone-number-mes" class="text-danger"></small>
+                                        <label class="d-block mt-2">Choose the fee payer:</label>
+                                        <div class="form-check my-2">
+                                            <input class="form-check-input" type="radio" name="fee" value="0"
+                                                id="me-fee">
+                                            <label class="form-check-label" for="me-fee">
+                                                Me
+                                            </label>
+                                        </div>
+                                        <div class="form-check mt-2">
+                                            <input class="form-check-input" type="radio" name="fee" value="1"
+                                                id="receiver-fee" checked>
+                                            <label class="form-check-label" for="receiver-fee">
+                                                Receiver
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="info-group amount-wrap transfer-amount">
@@ -558,36 +529,6 @@
             </div>
         </div>
     </div>
-    <div id="update-identity-modal" class="modal fade" data-bs-backdrop="static" aria-hidden="true" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content bg-dark">
-                <div class="modal-header flex-column">
-                    <button id="close-pass-form" type="button" class="btn-close bg-danger" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-                    <h4 class="modal-title mx-auto">Update Identity Card</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group mb-2">
-                        <label for="input-current-password" class="mb-2">Front Side:</label>
-                        <div id="font-side" class="input-group">
-                            <input id="front-identity-card" class="form-control" type="file"
-                                accept="image/jpeg, image/png">
-                        </div>
-                    </div>
-                    <div class="form-group mb-2">
-                        <label for="input-new-password" class="mb-2">Back Side:</label>
-                        <div id="back-side" class="input-group">
-                            <input id="back-identity-card" class="form-control" type="file"
-                                accept="image/jpeg, image/png">
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button id="reset-pass-btn" type="button" class="btn btn-outline-primary">Update</button>
-                </div>
-            </div>
-        </div>
-    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
         integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -595,7 +536,7 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
-    <script src="assets/index.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>
